@@ -21,3 +21,9 @@ class Lift:
 
     def stop_lift(self):
         self.running = False
+
+    def add_trail(self, trail):
+        self.trails.append(trail)
+
+    def remove_trail(self, trail):
+        self.trails.remove(trail)

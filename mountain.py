@@ -35,3 +35,21 @@ class Mountain:
     def lodge_status(self, lodge_name):
         #TODO: prints a list of lodges and whether they are open and/or running food or not.
         print("TODO: prints a list of lodges and whether they are open and/or running food or not.")
+
+    def add_trail(self, trail):
+        self.trails.append(trail)
+
+    def remove_trail(self, trail):
+        self.trails.remove(trail)
+
+    def add_lift(self, lift):
+        self.lifts.append(lift)
+
+    def remove_lift(self, lift):
+        self.lifts.remove(lift)
+
+    def add_lodge(self, lodge):
+        self.lodges.append(lodge)
+
+    def remove_lodge(self, lodge):
+        self.lodges.remove(lodge)

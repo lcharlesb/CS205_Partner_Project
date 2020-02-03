@@ -22,3 +22,9 @@ class Trail:
 
     def groom_trail(self):
         self.groomed = True
+
+    def add_lift(self, lift):
+        self.lifts.append(lift)
+
+    def remove_lift(self, lift):
+        self.lifts.remove(lift)

@@ -7,26 +7,25 @@ class Simulation:
         self.mountain = mountain
 
     def run(self):
-
         #trails created
-        vista_glades = Trail.trail("Vista Glades", 3, False)
-        alta_vista = Trail.trail("Alta Vista", 2, True)
-        shermans_pass = Trail.trail("Sherman's Pass", 1, True)
-        cobrass = Trail.trail("Cobrass", 2, False)
-        preacher = Trail.trail("Preacher", 4, False)
-        bolton_outlaw = Trail.trail("Bolton Outlaw", 3, False)
-        cougar = Trail.trail("Cougar", 3, False)
-        lost_boyz = Trail.trail("Lost Boyz", 4, False)
-        adams_solitude = Trail.trail("Adam's Solitude", 4, False)
+        vista_glades = trail.Trail("Vista Glades", 3, False)
+        alta_vista = trail.Trail("Alta Vista", 2, True)
+        shermans_pass = trail.Trail("Sherman's Pass", 1, True)
+        cobrass = trail.Trail("Cobrass", 2, False)
+        preacher = trail.Trail("Preacher", 4, False)
+        bolton_outlaw = trail.Trail("Bolton Outlaw", 3, False)
+        cougar = trail.Trail("Cougar", 3, False)
+        lost_boyz = trail.Trail("Lost Boyz", 4, False)
+        adams_solitude = trail.Trail("Adam's Solitude", 4, False)
 
         #lifts created
-        vista = Lift.lift("Vista", True)
-        wilderness = Lift.lift("Wilderness", True)
-        timberline = Lift.lift("Timberline", True)
+        vista = lift.Lift("Vista", True)
+        wilderness = lift.Lift("Wilderness", True)
+        timberline = lift.Lift("Timberline", True)
 
         #lodges created
-        base_lodge = Lodge.lodge("Base", True, True)
-        timberline_lodge = Lodge.lodge("Timberline", True, True)
+        base_lodge = lodge.Lodge("Base", True, True)
+        timberline_lodge = lodge.Lodge("Timberline", True, True)
 
         #trails added to lifts
         vista.add_trail(vista_glades)

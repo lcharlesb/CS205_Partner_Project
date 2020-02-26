@@ -25,7 +25,7 @@ class TestMountain(unittest.TestCase):
         # called after every test
         print('tearDown()')
 
-    # Functions for testing mountain.py
+    # Functions for testing mountain.py - Luke
     def test_mountain_to_string(self):
         print('TODO')
 
@@ -71,7 +71,7 @@ class TestMountain(unittest.TestCase):
     def test_mountain_remove_lodge(self):
         print('TODO')
 
-    # Functions for testing trail.py
+    # Functions for testing trail.py - Matt
     def test_trail_to_string(self):
         print('TODO')
 
@@ -96,7 +96,7 @@ class TestMountain(unittest.TestCase):
     def test_trail_remove_lift(self):
         print('TODO')
 
-    # Functions for testing lift.py
+    # Functions for testing lift.py - Luke
     def test_lift_to_string(self):
         print('TODO')
 
@@ -121,7 +121,7 @@ class TestMountain(unittest.TestCase):
     def test_lift_remove_trail(self):
         print('TODO')
 
-    # Functions for testing lodge.py
+    # Functions for testing lodge.py - Matt
     def test_lodge_to_string(self):
         print('TODO')
 

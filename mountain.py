@@ -25,16 +25,47 @@ class Mountain:
         print(*self.lodges, sep = "\n")
 
     def trail_status(self, trail_name):
-        #TODO: prints a list of trails and whether they are open or not, as well as if they are groomed or not.
-        print("TODO: prints a list of trails and whether they are open or not, as well as if they are groomed or not.")
+        for trail in self.trails:
+            if trail.get_name == trail_name:
+                groomed = ""
+                open = ""
+                if trial.get_groomed == True:
+                    groomed = "groomed"
+                else:
+                    groomed = "not groomed"
+                if trail.get_open == True:
+                    open = "open"
+                else:
+                    open = "closed"
+                print(trail_name + " is currently " + groomed + " and " + open + ".")
+
 
     def lift_status(self, lift_name):
-        #TODO: prints a list of lifts and whether they are running or not.
-        print("TODO: prints a list of lifts and whether they are running or not.")
+        for lift in self.lifts:
+            if lift.get_name == lift_name:
+                running = ""
+                if lift.get_running == True:
+                    running = "running"
+                else:
+                    running = "not running"
+                print(lift_name + " is currently " + running + ".")
 
     def lodge_status(self, lodge_name):
         #TODO: prints a list of lodges and whether they are open and/or running food or not.
         print("TODO: prints a list of lodges and whether they are open and/or running food or not.")
+        for lodge in self.lodges:
+            if lodge_name == lodge.get_name:
+                open = ""
+                food = ""
+                if lodge.get_open == True:
+                    open = "open"
+                else:
+                    open = "closed"
+                if lodge.get_food == True:
+                    food = "serving food"
+                else:
+                    food = "not serving food"
+                print(lodge_name + " is currently " + open + " and " + food + ".")
 
     def add_trail(self, trail):
         self.trails.append(trail)

@@ -31,7 +31,7 @@ class Mountain:
                 trail_found = True
                 groomed = ""
                 open = ""
-                if trial.get_groomed == True:
+                if trail.get_groomed == True:
                     groomed = "groomed"
                 else:
                     groomed = "not groomed"

@@ -11,10 +11,10 @@ class Lodge:
         return self.name
 
     def get_open(self):
-        return this.open
+        return self.open
 
     def get_food(self):
-        return this.food
+        return self.food
 
     def open_lodge(self):
         self.open = True

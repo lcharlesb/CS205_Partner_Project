@@ -51,8 +51,6 @@ class Mountain:
                 print(lift_name + " is currently " + running + ".")
 
     def lodge_status(self, lodge_name):
-        #TODO: prints a list of lodges and whether they are open and/or running food or not.
-        print("TODO: prints a list of lodges and whether they are open and/or running food or not.")
         for lodge in self.lodges:
             if lodge_name == lodge.get_name:
                 open = ""

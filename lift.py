@@ -1,5 +1,5 @@
 class Lift:
-    def __init__(self, name, running):
+    def __init__(self, name="", running=False):
         self.name = name
         self.running = running
         self.trails = list()

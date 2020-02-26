@@ -1,5 +1,5 @@
 class Lodge:
-    def __init__(self, name, open, food):
+    def __init__(self, name="", open=False, food=False):
         self.name = name
         self.open = open
         self.food = food

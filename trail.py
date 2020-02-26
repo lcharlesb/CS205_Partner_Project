@@ -1,5 +1,5 @@
 class Trail:
-    def __init__(self, name, difficulty, groomed):
+    def __init__(self, name="", difficulty=0, groomed=False):
         self.name = name
         self.difficulty = difficulty
         self.groomed = groomed

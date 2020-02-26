@@ -1,5 +1,5 @@
 class Mountain:
-    def __init__(self, name, location):
+    def __init__(self, name="", location=""):
         self.name = name
         self.location = location
         self.trails = list()

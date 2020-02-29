@@ -283,28 +283,82 @@ class TestMountain(unittest.TestCase):
 
     # Functions for testing lift.py - Luke
     def test_lift_to_string(self):
-        print('TODO')
+        temp_lift = lift.Lift("Temp Lift")
+        returned_string = temp_lift.to_string()
+
+        self.assertEqual("Temp Lift", returned_string)
 
     def test_lift_get_name(self):
-        print('TODO')
+        temp_lift = lift.Lift("Temp Lift")
+        returned_string = temp_lift.get_name()
+
+        self.assertEqual("Temp Lift", returned_string)
 
     def test_lift_get_running(self):
-        print('TODO')
+        # Test for running lift.
+        running_lift = lift.Lift("Temp Lift", True)
+        returned_boolean = running_lift.get_running()
+
+        self.assertEqual(True, returned_boolean)
+
+        # Test for not running lift.
+        not_running_lift = lift.Lift("Temp Lift", False)
+        returned_boolean = not_running_lift.get_running()
+
+        self.assertEqual(False, returned_boolean)
 
     def test_lift_get_trails(self):
-        print('TODO')
+        trail1 = trail.Trail("Trail1")
+        trail2 = trail.Trail("Trail2")
+
+        lift1 = lift.Lift("Lift1")
+        lift1.add_trail(trail1)
+        lift1.add_trail(trail2)
+
+        with mock.patch('sys.stdout', new=io.StringIO()) as temp_stdout:
+            lift1.get_trails()
+
+        expected_print_statement = "Trail1\nTrail2\n"
+        assert temp_stdout.getvalue() == expected_print_statement
 
     def test_lift_run_lift(self):
-        print('TODO')
+        lift1 = lift.Lift("Lift1", False)
+        lift1.run_lift()
+
+        lift_is_running = lift1.running
+
+        self.assertTrue(lift_is_running)
 
     def test_lift_stop_lift(self):
-        print('TODO')
+        lift1 = lift.Lift("Lift1", True)
+        lift1.stop_lift()
+
+        lift_is_not_running = lift1.running
+
+        self.assertFalse(lift_is_not_running)
 
     def test_lift_add_trail(self):
-        print('TODO')
+        added_trail = trail.Trail("Added Trail")
+        lift1 = lift.Lift("Lift1")
+        lift1.add_trail(added_trail)
+        trail_exists_in_lift = False
+        for curr_trail in lift1.trails:
+            if curr_trail.name == "Added Trail":
+                trail_exists_in_lift = True
+
+        self.assertTrue(trail_exists_in_lift)
 
     def test_lift_remove_trail(self):
-        print('TODO')
+        added_trail = trail.Trail("Added Trail")
+        lift1 = lift.Lift("Lift1")
+        lift1.add_trail(added_trail)
+        lift1.remove_trail("Added Trail")
+        trail_exists_in_lift = False
+        for curr_trail in lift1.trails:
+            if curr_trail.name == "Added Trail":
+                trail_exists_in_lift = True
+
+        self.assertFalse(trail_exists_in_lift)
 
     # Functions for testing lodge.py - Matt
     def test_lodge_to_string(self):

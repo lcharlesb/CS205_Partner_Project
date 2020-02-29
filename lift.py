@@ -14,7 +14,8 @@ class Lift:
         return self.running
 
     def get_trails(self):
-        print(*self.trails, sep = "\n")
+        for trail in self.trails:
+            print(trail.name)
 
     def run_lift(self):
         self.running = True
@@ -25,5 +26,7 @@ class Lift:
     def add_trail(self, trail):
         self.trails.append(trail)
 
-    def remove_trail(self, trail):
-        self.trails.remove(trail)
+    def remove_trail(self, trail_name):
+        for trail in self.trails:
+            if trail.name == trail_name:
+                self.trails.remove(trail)

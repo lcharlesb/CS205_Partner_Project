@@ -18,7 +18,8 @@ class Trail:
         return self.groomed
 
     def get_lifts(self):
-        print(*self.lifts, sep = "\n")
+        for lift in self.lifts:
+            print(lift.name)
 
     def groom_trail(self):
         self.groomed = True
@@ -26,5 +27,7 @@ class Trail:
     def add_lift(self, lift):
         self.lifts.append(lift)
 
-    def remove_lift(self, lift):
-        self.lifts.remove(lift)
+    def remove_lift(self, lift_name):
+        for lift in self.lifts:
+            if lift.name == lift_name:
+                self.lifts.remove(lift)

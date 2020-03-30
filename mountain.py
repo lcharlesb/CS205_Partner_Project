@@ -41,7 +41,6 @@ class Mountain:
         if trail_found == False:
             print("No trail by the name of " + trail_name + " exists on this mountain.")
 
-
     def lift_status(self, lift_name):
         lift_found = False
         for lift in self.lifts:

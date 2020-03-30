@@ -12,13 +12,13 @@ class TestMountain(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        # called one time, at beginning
+        # Called one time, at beginning
         print('setUpClass()')
 
-        #mountain created
+        # Mountain created
         self.mountain = mountain.Mountain("Bolton Valley", "Bolton, VT")
 
-        #trails created
+        # Trails created
         vista_glades = trail.Trail("Vista Glades", 3, False)
         alta_vista = trail.Trail("Alta Vista", 2, True)
         shermans_pass = trail.Trail("Sherman's Pass", 1, True)
@@ -29,16 +29,16 @@ class TestMountain(unittest.TestCase):
         lost_boyz = trail.Trail("Lost Boyz", 4, False)
         adams_solitude = trail.Trail("Adam's Solitude", 4, False)
 
-        #lifts created
+        # Lifts created
         vista = lift.Lift("Vista", True)
         wilderness = lift.Lift("Wilderness", False)
         timberline = lift.Lift("Timberline", True)
 
-        #lodges created
+        # Lodges created
         base_lodge = lodge.Lodge("Base", True, True)
         timberline_lodge = lodge.Lodge("Timberline", False, False)
 
-        #trails added to lifts
+        # Trails added to lifts
         vista.add_trail(vista_glades)
         vista.add_trail(alta_vista)
         vista.add_trail(shermans_pass)
@@ -49,7 +49,7 @@ class TestMountain(unittest.TestCase):
         timberline.add_trail(lost_boyz)
         timberline.add_trail(adams_solitude)
 
-        #lifts added to trails
+        # Lifts added to trails
         vista_glades.add_lift(vista)
         alta_vista.add_lift(vista)
         shermans_pass.add_lift(vista)
@@ -60,7 +60,7 @@ class TestMountain(unittest.TestCase):
         lost_boyz.add_lift(timberline)
         adams_solitude.add_lift(timberline)
 
-        #trails added to mountain
+        # Trails added to mountain
         self.mountain.add_trail(vista_glades)
         self.mountain.add_trail(alta_vista)
         self.mountain.add_trail(shermans_pass)
@@ -71,26 +71,26 @@ class TestMountain(unittest.TestCase):
         self.mountain.add_trail(lost_boyz)
         self.mountain.add_trail(adams_solitude)
 
-        #lifts added to mountain
+        # Lifts added to mountain
         self.mountain.add_lift(vista)
         self.mountain.add_lift(wilderness)
         self.mountain.add_lift(timberline)
 
-        #lodges added to mountain
+        # Lodges added to mountain
         self.mountain.add_lodge(base_lodge)
         self.mountain.add_lodge(timberline_lodge)
 
     @classmethod
     def tearDownClass(self):
-        # called one time, at end
+        # Called one time, at end
         print('tearDownClass()')
 
     def setUp(self):
-        # called before every test
+        # Called before every test
         print('setUp()')
 
     def tearDown(self):
-        # called after every test
+        # Called after every test
         print('tearDown()')
 
     # Functions for testing mountain.py - Luke
@@ -258,28 +258,80 @@ class TestMountain(unittest.TestCase):
 
     # Functions for testing trail.py - Matt
     def test_trail_to_string(self):
-        print('TODO')
+        temp_trail = trail.Trail("Temp Trail")
+        returned_string = temp_trail.to_string()
+
+        self.assertEqual("Temp Trail", returned_string)
 
     def test_trail_get_name(self):
-        print('TODO')
+        temp_trail = trail.Trail("Temp Trail")
+        returned_string = temp_trail.get_name()
+
+        self.assertEqual("Temp Trail", returned_string)
 
     def test_trail_get_difficulty(self):
-        print('TODO')
+        temp_trail = trail.Trail("Temp Trail", 1, False)
+        returned_integer = temp_trail.get_difficulty()
+
+        self.assertEqual(1, returned_integer)
 
     def test_trail_get_groomed(self):
-        print('TODO')
+        # Test for groomed trail.
+        temp_trail = trail.Trail("Temp Trail", 0, True)
+        returned_boolean = temp_trail.get_groomed()
+
+        self.assertEqual(True, returned_boolean)
+
+        # Test for ungroomed trail.
+        temp_trail = trail.Trail("Temp Trail", 0, False)
+        returned_boolean = temp_trail.get_groomed()
+
+        self.assertEqual(False, returned_boolean)
 
     def test_trail_get_lifts(self):
-        print('TODO')
+        lift1 = lift.Lift("Lift1")
+        lift2 = lift.Lift("Lift2")
 
-    def test_trail_get_trail(self):
-        print('TODO')
+        trail1 = trail.Trail("Trail1")
+        trail1.add_lift(lift1)
+        trail1.add_lift(lift2)
+
+        with mock.patch('sys.stdout', new=io.StringIO()) as temp_stdout:
+            trail1.get_lifts()
+
+        expected_print_statement = "Lift1\nLift2\n"
+        assert temp_stdout.getvalue() == expected_print_statement
+
+    def test_trail_groom_trail(self):
+        trail1 = trail.Trail("Trail1", 0, False)
+        trail1.groom_trail()
+
+        trail_is_groomed = trail1.groomed
+
+        self.assertTrue(trail_is_groomed)
 
     def test_trail_add_lift(self):
-        print('TODO')
+        added_lift = lift.Lift("Added Lift")
+        trail1 = trail.Trail("Trail1")
+        trail1.add_lift(added_lift)
+        lift_exists_in_trail = False
+        for curr_lift in trail1.lifts:
+            if curr_lift.name == "Added Lift":
+                lift_exists_in_trail = True
+
+        self.assertTrue(lift_exists_in_trail)
 
     def test_trail_remove_lift(self):
-        print('TODO')
+        added_lift = lift.Lift("Added Lift")
+        trail1 = trail.Trail("Trail1")
+        trail1.add_lift(added_lift)
+        trail1.remove_lift("Added Lift")
+        lift_exists_in_trail = False
+        for curr_lift in trail1.lifts:
+            if curr_lift.name == "Added Lift":
+                lift_exists_in_trail = True
+
+        self.assertFalse(lift_exists_in_trail)
 
     # Functions for testing lift.py - Luke
     def test_lift_to_string(self):
@@ -362,28 +414,74 @@ class TestMountain(unittest.TestCase):
 
     # Functions for testing lodge.py - Matt
     def test_lodge_to_string(self):
-        print('TODO')
+        temp_lodge = lodge.Lodge("Temp Lodge")
+        returned_string = temp_lodge.to_string()
+
+        self.assertEqual("Temp Lodge", returned_string)
 
     def test_lodge_get_name(self):
-        print('TODO')
+        temp_lodge = lodge.Lodge("Temp Lodge")
+        returned_string = temp_lodge.get_name()
+
+        self.assertEqual("Temp Lodge", returned_string)
 
     def test_lodge_get_open(self):
-        print('TODO')
+        # Test for open lodge.
+        temp_lodge = lodge.Lodge("Temp Lodge", True, False)
+        returned_boolean = temp_lodge.get_open()
+
+        self.assertEqual(True, returned_boolean)
+        
+        # Test for closed lodge.
+        temp_lodge = lodge.Lodge("Temp Lodge", False, False)
+        returned_boolean = temp_lodge.get_open()
+
+        self.assertEqual(False, returned_boolean)
 
     def test_lodge_get_food(self):
-        print('TODO')
+        # Test for serving food.
+        temp_lodge = lodge.Lodge("Temp Lodge", True, True)
+        returned_boolean = temp_lodge.get_food()
+
+        self.assertEqual(True, returned_boolean)
+
+        # Test for not serving food.
+        temp_lodge = lodge.Lodge("Temp Lodge", True, False)
+        returned_boolean = temp_lodge.get_food()
+
+        self.assertEqual(False, returned_boolean)
 
     def test_lodge_open_lodge(self):
-        print('TODO')
+        lodge1 = lodge.Lodge("Lodge1", False, False)
+        lodge1.open_lodge()
+
+        lodge_is_open = lodge1.open
+
+        self.assertTrue(lodge_is_open)
 
     def test_lodge_close_lodge(self):
-        print('TODO')
+        lodge1 = lodge.Lodge("Lodge1", True, False)
+        lodge1.close_lodge()
+
+        lodge_is_closed = lodge1.open
+
+        self.assertFalse(lodge_is_closed)
 
     def test_lodge_open_food(self):
-        print('TODO')
+        lodge1 = lodge.Lodge("Lodge1", True, False)
+        lodge1.open_food()
+
+        lodge_food_is_open = lodge1.open_food
+
+        self.assertTrue(lodge_food_is_open)
 
     def test_lodge_close_food(self):
-        print('TODO')
+        lodge1 = lodge.Lodge("Lodge1", True, True)
+        lodge1.close_food()
+
+        lodge_food_is_closed = lodge1.open_food
+
+        self.assertFalse(lodge_food_is_closed)
 
 if __name__ == "__main__":
     unittest.main()

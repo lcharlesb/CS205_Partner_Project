@@ -261,7 +261,7 @@ class TestMountain(unittest.TestCase):
         temp_trail = trail.Trail("Temp Trail")
         returned_string = temp_trail.to_string()
 
-        self.assertEqual("Temp Trail", returned_string)
+        self.assertEqual("Temp Trail, 0", returned_string)
 
     def test_trail_get_name(self):
         temp_trail = trail.Trail("Temp Trail")
@@ -431,7 +431,7 @@ class TestMountain(unittest.TestCase):
         returned_boolean = temp_lodge.get_open()
 
         self.assertEqual(True, returned_boolean)
-        
+
         # Test for closed lodge.
         temp_lodge = lodge.Lodge("Temp Lodge", False, False)
         returned_boolean = temp_lodge.get_open()
@@ -471,7 +471,7 @@ class TestMountain(unittest.TestCase):
         lodge1 = lodge.Lodge("Lodge1", True, False)
         lodge1.open_food()
 
-        lodge_food_is_open = lodge1.open_food
+        lodge_food_is_open = lodge1.food
 
         self.assertTrue(lodge_food_is_open)
 
@@ -479,7 +479,7 @@ class TestMountain(unittest.TestCase):
         lodge1 = lodge.Lodge("Lodge1", True, True)
         lodge1.close_food()
 
-        lodge_food_is_closed = lodge1.open_food
+        lodge_food_is_closed = lodge1.food
 
         self.assertFalse(lodge_food_is_closed)
 

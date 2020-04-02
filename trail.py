@@ -6,7 +6,7 @@ class Trail:
         self.lifts = list()
 
     def to_string(self):
-        return self.name + ", " + self.difficulty
+        return self.name + ", " + str(self.difficulty)
 
     def get_name(self):
         return self.name
